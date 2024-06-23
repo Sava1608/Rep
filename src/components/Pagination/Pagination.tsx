@@ -5,9 +5,11 @@ const Pagination:FC = () => {
      const [query, setQuery]= useSearchParams({page:'1'});
      const next = () => {
          setQuery(prev1 => ({...prev1, page: +prev1.get('page') + 1}));
+         window.scrollTo({ top: 0, behavior: 'smooth' });
      }
      const prev = () => {
          setQuery(prev1 => ({...prev1, page: +prev1.get('page') - 1}));
+         window.scrollTo({ top: 0, behavior: 'smooth' });
      }
     return (
         <div className="d-flex justify-content-around mt-3">

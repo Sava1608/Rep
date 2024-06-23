@@ -6,8 +6,12 @@ const Header = () => {
     return (
         <div className="container d-flex justify-content-around">
             <div className="d-flex align-items-center">
-            <Home/>
-            <Switch/>
+                    <div className={"m-3"}>
+                        <Home/>
+                    </div>
+                    <div>
+                        <Switch/>
+                    </div>
             </div>
         </div>
     );

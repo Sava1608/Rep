@@ -54,11 +54,6 @@ const MovieInfo = () => {
                     <h6>{release_date}</h6>
                     <p>{overview}</p>
                     <div>{star.render()}</div>
-                    <div className="row mt-4">
-                        <div className="col-12">
-                            <TrailerMovie/>
-                        </div>
-                    </div>
                     <div className="mt-3">
                         {
                             !genres ?
@@ -72,6 +67,11 @@ const MovieInfo = () => {
                                         }}>{g.name}</button>
                                     </Link>)
                         }
+                        <div className="row mt-4">
+                            <div className="col-12">
+                                <TrailerMovie/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

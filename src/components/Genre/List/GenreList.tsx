@@ -8,7 +8,7 @@ const GenreList = () => {
     const {genres,arrIdGenres, } = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
-        dispatch(moviesActions.getGenres)
+        dispatch(moviesActions.getGenres())
     }, [dispatch]);
     useEffect(() => {
         dispatch(moviesActions.getMoviesByGenre(arrIdGenres.toString()));
@@ -19,7 +19,7 @@ const GenreList = () => {
     }
     return (
         <div className="container mt-4">
-            <div className="row">
+            <div className="d-flex flex-wrap align-items-center justify-content-center">
                 {!genres ? (
                     <div className="col-12 text-center">
                         <div className="spinner-border" role="status">

@@ -7,7 +7,7 @@ const MoviesGenres = () => {
     const array = movies?.results;
     return (
         <div>
-            <div>
+            <div className={"row row-cols-md-4 g-4"}>
                 { ! array ? <div>loading</div> :
                     array.map(movie => <Movie key={movie.id} movie={movie}/>)
                 }
