@@ -3,17 +3,17 @@ import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@
 import { AxiosError } from "axios";
 import { IGenre } from "../../interfaces/IGenre";
 import { IMovies } from "../../interfaces/IMovies";
-import {IVideo} from "../../interfaces/IVideo";
+import {IVideo, IVideoResult} from "../../interfaces/IVideo";
 import {movieService} from "../../services/movie.service";
 
 interface IState {
-    genres: IGenre,
+    genres: IGenre | null,
     arrIdGenres: string[],
-    movies: IMovies,
-    error: string,
-    img: string,
+    movies: IMovies | null,
+    error: string | null,
+    img: string | null,
     toggle: boolean,
-    videos: IVideo
+    videos: IVideoResult | null;
 }
 
 const initialState: IState = {
@@ -123,7 +123,7 @@ const slice = createSlice({
                 .addCase(getVideos.fulfilled, (state, action) => {
                     const {results} = action.payload;
                     const trailer = results.find(official => official.name === 'Official Trailer');
-                    state.videos = trailer;
+                    state.videos = trailer ?? null;
                 })
 
 
@@ -137,9 +137,9 @@ const slice = createSlice({
     }
 )
 
-const {actions, reducer: movieReducer} = slice;
+const {actions, reducer: moviesReducer} = slice;
 
-const movieActions = {
+const moviesActions = {
     ...actions,
     search,
     getGenres,
@@ -149,6 +149,6 @@ const movieActions = {
 }
 
 export {
-    movieReducer,
-    movieActions
+    moviesReducer,
+    moviesActions
 }
